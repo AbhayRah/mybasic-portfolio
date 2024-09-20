@@ -1,3 +1,4 @@
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +12,7 @@ body {
     color: #333;
 }
 
+/* Section Styling */
 .section {
     padding: 80px 10%;
     text-align: center;
@@ -18,6 +20,18 @@ body {
 
 .section h2 {
     margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.section-description {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2em;
+    line-height: 1.7;
 }
 
 /* Navigation Bar */
@@ -31,6 +45,18 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
 }
 
 .logo {
@@ -53,7 +79,7 @@ body {
     color: #fff;
     font-size: 18px;
     padding: 10px;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
@@ -94,24 +120,32 @@ body {
     text-decoration: none;
     border-radius: 30px;
     font-size: 1.2em;
-    transition: 0.3s;
+    transition: background-color 0.3s;
 }
 
 .cta-btn:hover {
     background-color: #ff8157;
 }
 
-/* Section Styling */
-.section-title {
-    font-size: 2.5em;
-    color: #333;
+/* About Me Section */
+.about-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 50px 0;
 }
 
-.section-description {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.2em;
-    line-height: 1.7;
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+    max-width: 600px;
 }
 
 /* Projects Section */
@@ -126,7 +160,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
+    transition: transform 0.3s;
 }
 
 .project-card:hover {
@@ -150,13 +184,11 @@ body {
 }
 
 .skill-card {
-    position: relative;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: 0.3s;
+    transition: transform 0.3s;
 }
 
 .skill-card:hover {
@@ -165,9 +197,9 @@ body {
 
 .skill-card h3 {
     color: #ff6347;
-    position: relative;
     margin-bottom: 20px;
-    transition: color 0.3s ease-in-out;
+    position: relative;
+    transition: color 0.3s;
 }
 
 .skill-card h3::before {
@@ -178,7 +210,7 @@ body {
     width: 0;
     height: 3px;
     background-color: #ff6347;
-    transition: width 0.3s ease-in-out;
+    transition: width 0.3s;
 }
 
 .skill-card:hover h3::before {
@@ -224,7 +256,7 @@ body {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 .tech-card:hover {
@@ -236,19 +268,14 @@ body {
     font-size: 50px;
     color: #0072ff;
     margin-bottom: 10px;
-    transition: color 0.3s ease-in-out;
-}
-
-.tech-card h3 {
-    font-size: 1.2em;
-    margin-top: 10px;
+    transition: color 0.3s;
 }
 
 .tech-card:hover i {
     color: #ff6347;
 }
 
-/* Contact Section / Footer */
+/* Contact Section */
 #contact {
     background: linear-gradient(135deg, #0072ff, #00c6ff);
     color: white;
@@ -262,9 +289,28 @@ body {
     margin-bottom: 40px;
 }
 
-.contact-content p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+.contact-content {
+    position: relative;
+    z-index: 1;
+    text-align: center
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
 }
 
 .contact-content a {
@@ -306,14 +352,32 @@ body {
     }
 }
 
-.contact-content {
-    position: relative;
-    z-index: 1;
-}
-
 /* Mobile Nav */
 .burger {
     display: none;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Transform burger into X when active */
+.burger.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.toggle .line2 {
+    opacity: 0;
+}
+
+.burger.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 @media (max-width: 768px) {
@@ -336,13 +400,12 @@ body {
 
     .burger {
         display: block;
-        cursor: pointer;
-    }
-
-    .burger div {
-        width: 25px;
-        height: 3px;
-        background-color: white;
-        margin: 5px;
     }
 }
+.gmail {
+    width: 70px;
+}
+.linkedin{
+    height: 40px;
+    width: 40px;
+} 
